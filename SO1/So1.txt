@@ -1,0 +1,65 @@
+﻿Apontamentos SO1 1ªfreq:
+
+1- Um sistema operativo micro kernel é caracterizado por remover todos os componentes não essenciais do núcleopara se implmentar no espaço user.
+A comunicação entre módulos realiza-se através de mensagens. Resumindo o MICRO KERNEL permite uma melhor comunicação entre o cliente e o servidor,
+sendo facil melhorar e modificar, é mais fácil de transportar para outros hardwares e é mais seguro.
+
+2-Os tipos de operações reservadas para o modo de operação privilegiado são: o acesso a recursos como periféricos e memória, caso o system mode e o
+user mode não existissem. em utilizador poderia efetuar operações de I/O ou acessos a memória que poderiam danificar o sistema.
+
+
+3- O PCB guarda o ID do processo, o estado, program counter, registos de CPU, estado das operações I/O, apontadores para a memória(code,heap),informação para escalonamento.
+
+4-As threads de kernel são utilizadas para tarefas internas de sistema executadas em "Background",como,colocar dados em dizco,gerar interrupções. SO permite a criação, escalonamento e gestão. 
+O utilizador não tem acesso a não ser que esteja a desenvolver uma extensão.As Threads de user são suportadas acima do kernel  são implementadas por uma thread library ao nivel do utilizador. 
+
+
+
+5- 	P1- Tempo Serviço= 10, Tchegada=20;
+	P2- Tempo Serviço=30, Tchegada=10;
+	P3- Tempo Serviço=50,Tchegada=0;
+
+	FIFO ou FCFS(First Come First Served):
+	{3,3,3,3,3,2,2,2,1} (Respeita somente os tempos de chegada.)
+
+	SJF(Shortest Job First):
+	{3,3,3,3,3,1,2,2,2}(Prioritiza o tempo de chegada de cada processo, ou seja como neste caso o processo 3 tem menor tempo de chegada será o primeiro a ser efetuado. No fim do tempo de realização do P3 ambos(P1 e P2) já chegaram sendo assim o processo com menor tempo de serviço o primeiro a ser realizado)
+
+	Round Robin(RR) com periodo(T) de 20 ms:
+	{3,3,2,2,1,3,3,2,3}(Prioritiza o tempo de chegada e o principio do algoritmo é que cada processo é utilizado apenas T ms de cada vez neste caso 20 ms, ou seja neste caso, o primeiro a ser efetuado é P3(primeiro a chegar) depois dos 30s de serviço de P2 20 são feitos, e depois o Ts de P1 é feito. E assim sucessivamente até todos os processos terem acabado)
+
+	HRRN(Highest response ratio reset):
+	{3,3,3,3,3,1,2,2,2}(Prioritiza aquela que tem menor tempo de chegada assim como na SJF sendo que o processo a ser realizado a seguir é decidido pelo que tem maior rácio. O rácio é calculado por: [T.Espera + T.Serviço]/T.Serviço, sendo que o rácio para o P1 seria 4 e para P2 seria 2,3. T.Espera=(Tempo do processo anterior-Tempo de chegada). Por exemplo para P1 o tempo de espera seria de 30 ms.)
+
+
+
+
+*OUTRAS PERGUNTAS TEÓRICAS:
+
+O Escalonamento pode ser de 2 tipos: Preemptivo- pode retirar o processo sem q tenha terminado;
+										Ñ-Preemptivo- espera que o processo liberte o CPU;
+
+
+Dados partilhados entre Threads do mesmo processo: Código; Dados/Var.Globais; Ficheiros.
+ Dados próprios: Variáveis locais/temporárias;ID;Program Counter.
+
+As Threads em relação aos processos:
+ Maior capacidade de resposta;
+ Maior poupança de recursos;
+
+ Em termos de pararelização de Threads permite maior rapidez mas menos espaço, e é mais dificil a sua coordenação.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

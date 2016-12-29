@@ -1,0 +1,24 @@
+﻿Semáforo:
+
+init (lotacao=100);
+init guarda=0;
+init podeentrar=1
+
+signal(guarda);							wait(guarda)	
+estar_no_jardim()						if(n=0 then wait(podeentrar))
+										wait(lotacao)
+										n=n+1
+
+wait(guarda);							entrar();
+                                                                estar_no_jardim();
+
+										
+								n=n-1
+								sair();
+								signal(lotacao)
+								if n=0 then signal(podeentrar)
+								signal(guarda)
+										
+
+
+
